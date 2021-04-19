@@ -6,6 +6,8 @@
 ![languages][languages]
 ![Event][nlw5]
 
+[▶ Demonstration][demo]
+
 # About
 
 An app that will help you to always maintain your plants and every else vegetables cool and health. And the nicer fact: all these resources at your hand with your mobile device, fast and quickly.
@@ -82,3 +84,4 @@ yarn ios
 [logo]: ./.github/logo.png
 [thumb]: ./.github/thumbnail.png
 [proto]: https://www.figma.com/file/IsduYtECjpvBflu6ZYsGw5/PlantManager-Copy?node-id=0%3A1
+[demo]: https://snack.expo.io/@cristianprochnow/plantmanager
