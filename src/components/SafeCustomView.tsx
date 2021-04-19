@@ -4,6 +4,7 @@ import {
   StyleProp,
   ViewStyle
 } from 'react-native'
+
 import { styles } from '../styles/components/safeCustomView'
 
 interface SafeCustomViewProps {
