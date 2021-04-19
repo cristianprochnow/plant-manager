@@ -25,6 +25,7 @@ An app that will help you to always maintain your plants and every else vegetabl
 # What I Learned
 
 - [x] Attribute custom types to images into TypeScript within React Native
+- [ ] Coming soon...
 
 # Getting started
 
