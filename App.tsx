@@ -9,7 +9,8 @@ import {
   Jost_600SemiBold
 } from '@expo-google-fonts/jost'
 
-import { Welcome } from './src/pages/Welcome'
+import { Name } from './src/pages/Name'
+import { SafeCustomView } from './src/components/SafeCustomView'
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -32,7 +33,9 @@ const App = () => {
         translucent
       />
 
-      <Welcome />
+      <SafeCustomView>
+        <Name />
+      </SafeCustomView>
     </>
   )
 }
