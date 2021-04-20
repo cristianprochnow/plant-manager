@@ -28,6 +28,7 @@ An app that will help you to always maintain your plants and every else vegetabl
 
 - [x] Attribute custom types to images into TypeScript within React Native
 - [x] Host quickly a mobile app demonstration at web with Expo
+- [x] Use custom fonts at React Native app with `@expo-google-fonts` lib
 - [ ] Coming soon...
 
 # Getting started

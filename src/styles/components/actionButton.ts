@@ -6,9 +6,8 @@ export const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: '80%',
+    width: '100%',
     height: 64,
-    marginBottom: 24,
     borderRadius: 16,
     backgroundColor: colors.green
   },
