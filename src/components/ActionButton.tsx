@@ -13,13 +13,19 @@ interface ActionButton extends TouchableOpacityProps {
 
 export const ActionButton = ({
   label,
-  onPress
+  onPress,
+  disabled
 }: ActionButton) => {
   return (
     <TouchableOpacity
       activeOpacity={0.6}
       onPress={onPress}
-      style={styles.button}
+      disabled={disabled}
+      style={
+        !!disabled
+          ? [styles.button, {opacity: 0.5}]
+          : styles.button
+      }
     >
       <Text style={styles.buttonText}>
         {label}

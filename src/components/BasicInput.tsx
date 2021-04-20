@@ -14,6 +14,7 @@ interface BasicInputProps extends TextInputProps {
 export const BasicInput = ({
   legend,
   onChange,
+  onChangeText,
   value
 }: BasicInputProps) => {
   const [isActive, setActive] = useState(false)
@@ -28,10 +29,10 @@ export const BasicInput = ({
 
   return (
     <TextInput
-      placeholder="Digite um nome"
+      placeholder={legend}
       onFocus={handleToggleInput}
       onEndEditing={handleToggleInput}
-      onChange={onChange}
+      onChangeText={onChangeText}
       value={value}
       style={
         isActive
