@@ -13,5 +13,6 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: fonts.jost[400],
     fontSize: 18,
+    color: colors.text
   }
 })
