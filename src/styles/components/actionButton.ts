@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 import colors from '../colors'
+import fonts from '../fonts'
 
 export const styles = StyleSheet.create({
   button: {
@@ -14,7 +15,7 @@ export const styles = StyleSheet.create({
 
   buttonText: {
     fontSize: 20,
-    fontWeight: '500',
+    fontFamily: fonts.jost[500],
     color: colors.white
   },
 })
