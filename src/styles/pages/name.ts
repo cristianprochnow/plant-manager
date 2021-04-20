@@ -22,16 +22,5 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.jost[600],
     textAlign: 'center',
     color: colors.heading,
-  },
-
-  input: {
-    width: '100%',
-    height: 40,
-    marginVertical: 40,
-    borderBottomColor: colors.gray,
-    borderBottomWidth: 1,
-    textAlign: 'center',
-    fontFamily: fonts.jost[400],
-    fontSize: 18,
   }
 })

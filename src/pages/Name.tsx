@@ -7,6 +7,7 @@ import {
 import Emoji from 'react-native-emoji'
 
 import { ActionButton } from '../components/ActionButton'
+import { BasicInput } from '../components/BasicInput'
 import { styles } from '../styles/pages/name'
 
 export const Name = () => {
@@ -21,10 +22,7 @@ export const Name = () => {
         Como podemos chamar você?
       </Text>
 
-      <TextInput
-        placeholder="Digite um nome"
-        style={styles.input}
-      />
+      <BasicInput legend="Digite um nome" />
 
       <ActionButton label="Confirmar" />
     </View>
