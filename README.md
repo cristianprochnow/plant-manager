@@ -27,7 +27,7 @@ An app that will help you to always maintain your plants and every else vegetabl
 # What I Learned
 
 - [x] Attribute custom types to images into TypeScript within React Native
-- [x] Host quickly a mobile app at web with Expo
+- [x] Host quickly a mobile app demonstration at web with Expo
 - [ ] Coming soon...
 
 # Getting started

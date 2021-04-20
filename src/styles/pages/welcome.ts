@@ -24,21 +24,6 @@ export const styles = StyleSheet.create({
     color: colors.heading
   },
 
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 56,
-    paddingHorizontal: 24,
-    marginBottom: 24,
-    borderRadius: 16,
-    backgroundColor: colors.green
-  },
-
-  buttonText: {
-    fontSize: 20,
-    color: colors.white
-  },
-
   heroImage: {
     width: 292,
     height: 284

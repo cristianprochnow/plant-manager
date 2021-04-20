@@ -8,6 +8,7 @@ import {
 import { SafeCustomView } from '../components/SafeCustomView'
 import heroImage from '../assets/watering.png'
 import { styles } from '../styles/pages/welcome'
+import { ActionButton } from '../components/ActionButton'
 
 export const Welcome = () => {
   return (
@@ -26,14 +27,7 @@ export const Welcome = () => {
         Nós cuidamos de lembrar você sempre que precisar.
       </Text>
 
-      <TouchableOpacity
-        style={styles.button}
-        activeOpacity={0.7}
-      >
-        <Text style={styles.buttonText}>
-          Entendi!
-        </Text>
-      </TouchableOpacity>
+      <ActionButton label="Avançar" />
     </SafeCustomView>
   )
 }
