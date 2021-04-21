@@ -1,9 +1,9 @@
 import React from 'react'
 import {
   Text,
-  Image,
-  TouchableOpacity
+  Image
 } from 'react-native'
+import { useNavigation } from '@react-navigation/core'
 
 import { SafeCustomView } from '../components/SafeCustomView'
 import heroImage from '../assets/watering.png'
@@ -11,6 +11,12 @@ import { styles } from '../styles/pages/welcome'
 import { ActionButton } from '../components/ActionButton'
 
 export const Welcome = () => {
+  const navigation = useNavigation()
+
+  function handleNavigateToNamePage() {
+    navigation.navigate('Name')
+  }
+
   return (
     <SafeCustomView customStyles={styles.container}>
       <Text style={styles.title}>
@@ -28,7 +34,10 @@ export const Welcome = () => {
         Nós cuidamos de lembrar você sempre que precisar.
       </Text>
 
-      <ActionButton label="Avançar" />
+      <ActionButton
+        label="Avançar"
+        onPress={handleNavigateToNamePage}
+      />
     </SafeCustomView>
   )
 }

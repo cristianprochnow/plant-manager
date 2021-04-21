@@ -19,6 +19,7 @@ export const BasicInput = ({
   ...rest
 }: BasicInputProps) => {
   const [isActive, setActive] = useState(false)
+  const isFilled = !!value
 
   function handleToggleInput() {
     if (isActive) {
@@ -36,7 +37,7 @@ export const BasicInput = ({
       onChangeText={onChangeText}
       value={value}
       style={
-        isActive
+        isActive || isFilled
           ? [styles.input, {borderBottomColor: colors.green}]
           : styles.input
       }
