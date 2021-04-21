@@ -15,7 +15,8 @@ export const BasicInput = ({
   legend,
   onChange,
   onChangeText,
-  value
+  value,
+  ...rest
 }: BasicInputProps) => {
   const [isActive, setActive] = useState(false)
 
@@ -39,6 +40,7 @@ export const BasicInput = ({
           ? [styles.input, {borderBottomColor: colors.green}]
           : styles.input
       }
+      {...rest}
     />
   )
 }

@@ -14,7 +14,8 @@ interface ActionButton extends TouchableOpacityProps {
 export const ActionButton = ({
   label,
   onPress,
-  disabled
+  disabled,
+  ...rest
 }: ActionButton) => {
   return (
     <TouchableOpacity
@@ -26,6 +27,7 @@ export const ActionButton = ({
           ? [styles.button, {opacity: 0.5}]
           : styles.button
       }
+      {...rest}
     >
       <Text style={styles.buttonText}>
         {label}
