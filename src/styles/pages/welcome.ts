@@ -1,4 +1,7 @@
-import { StyleSheet } from 'react-native'
+import {
+  StyleSheet,
+  Dimensions
+} from 'react-native'
 
 import colors from '../colors'
 import fonts from '../fonts'
@@ -27,7 +30,6 @@ export const styles = StyleSheet.create({
   },
 
   heroImage: {
-    width: 292,
-    height: 284
+    width: Dimensions.get('window').width * 0.7
   }
 })

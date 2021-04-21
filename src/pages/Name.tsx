@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import {
-  NativeSyntheticEvent,
   Text,
-  TextInputChangeEventData,
   View,
+  KeyboardAvoidingView,
+  Platform
 } from 'react-native'
 import Emoji from 'react-native-emoji'
 
@@ -14,40 +14,50 @@ import { styles } from '../styles/pages/name'
 export const Name = () => {
   const [userName, setUserName] = useState('')
   const isUserNameEmpty = userName === ''
+  const isAnIosDevice = Platform.OS === 'ios'
 
   function handleChangeInputVale(text: string) {
     setUserName(text)
   }
 
   return (
-    <View style={styles.container}>
-      <Emoji
-        name={
-          isUserNameEmpty
-            ? 'smiley'
-            : 'smile'
-        }
-        style={styles.emoji}
-      />
+    <KeyboardAvoidingView
+      behavior={
+        isAnIosDevice
+          ? 'padding'
+          : 'height'
+      }
+      style={styles.container}
+    >
+      <View style={styles.wrapper}>
+        <Emoji
+          name={
+            isUserNameEmpty
+              ? 'smiley'
+              : 'smile'
+          }
+          style={styles.emoji}
+        />
 
-      <Text style={styles.title}>
-        Como podemos chamar você?
-      </Text>
+        <Text style={styles.title}>
+          Como podemos chamar você?
+        </Text>
 
-      <BasicInput
-        legend="Digite um nome"
-        onChangeText={handleChangeInputVale}
-        value={userName}
-      />
+        <BasicInput
+          legend="Digite um nome"
+          onChangeText={handleChangeInputVale}
+          value={userName}
+        />
 
-      <ActionButton
-        label="Confirmar"
-        disabled={
-          isUserNameEmpty
-            ? true
-            : false
-        }
-      />
-    </View>
+        <ActionButton
+          label="Confirmar"
+          disabled={
+            isUserNameEmpty
+              ? true
+              : false
+          }
+        />
+      </View>
+    </KeyboardAvoidingView>
   )
 }

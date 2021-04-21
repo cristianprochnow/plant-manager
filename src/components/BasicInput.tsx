@@ -32,7 +32,7 @@ export const BasicInput = ({
     <TextInput
       placeholder={legend}
       onFocus={handleToggleInput}
-      onEndEditing={handleToggleInput}
+      onBlur={handleToggleInput}
       onChangeText={onChangeText}
       value={value}
       style={

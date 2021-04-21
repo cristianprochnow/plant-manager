@@ -20,6 +20,7 @@ export const Welcome = () => {
       <Image
         style={styles.heroImage}
         source={heroImage}
+        resizeMode="contain"
       />
 
       <Text style={styles.subtitle}>

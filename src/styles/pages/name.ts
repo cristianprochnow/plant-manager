@@ -6,8 +6,13 @@ import fonts from '../fonts'
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 32,
-    alignItems: 'center'
+  },
+
+  wrapper: {
+    flex: 1,
+    paddingHorizontal: 32,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   emoji: {
