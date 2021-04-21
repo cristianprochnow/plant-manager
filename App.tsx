@@ -10,7 +10,7 @@ import {
 } from '@expo-google-fonts/jost'
 
 import { SafeCustomView } from './src/components/SafeCustomView'
-import { NameSuccess } from './src/pages/NameSuccess'
+import { Welcome } from './src/pages/Welcome'
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -34,7 +34,7 @@ const App = () => {
       />
 
       <SafeCustomView>
-        <NameSuccess />
+        <Welcome />
       </SafeCustomView>
     </>
   )
