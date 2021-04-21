@@ -31,7 +31,7 @@ An app that will help you to always maintain your plants and every else vegetabl
 - [x] Use custom fonts at React Native app with `@expo-google-fonts` lib
 - [x] Apply responsive sizes to images into React Native using `Dimensions` class from `react-native` package
 - [x] Work with multiple routes types with `react-navigation`
-- [x] Turn keyboard use lightly better with `Keyboard` resource from `react-native`
+- [x] Turn keyboard using lightly better with `Keyboard` resource from `react-native`
 - [ ] Coming soon...
 
 # Getting started
