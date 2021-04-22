@@ -37,6 +37,7 @@ export const PlantSelector = () => {
   const [environments, setEnvironments] = useState<EnvironmentData[]>([])
   const [selectedEnvironment, setSelectedEnvironment] = useState('all')
   const [plants, setPlants] = useState<PlantsData[]>([])
+  const [filteredPlants, setFilteredPlants] = useState<PlantsData[]>([])
   /** the "all" option is the "todos" button */
   const allEnvironmentsOption = {
     key: 'all',
@@ -45,6 +46,24 @@ export const PlantSelector = () => {
 
   function handleToggleEnvironment(environmentKey: string) {
     setSelectedEnvironment(environmentKey)
+    filterPlants(environmentKey)
+
+    function filterPlants(environment: string) {
+      const isSelectAllEnvironmentsOption = environment === allEnvironmentsOption.key
+
+      if (isSelectAllEnvironmentsOption) {
+        setFilteredPlants(plants)
+      } else {
+        const filteredPlants = getPlantsByEnvironment(environmentKey)
+
+        setFilteredPlants(filteredPlants)
+
+        function getPlantsByEnvironment(environment: string) {
+          return plants
+            .filter(plant => plant.environments.includes(environment))
+        }
+      }
+    }
   }
 
   useEffect(() => {
@@ -69,6 +88,7 @@ export const PlantSelector = () => {
         .get('/plants?_sort=name&_order=asc')
 
       setPlants(data)
+      setFilteredPlants(data)
     }
   }, [])
 
@@ -114,7 +134,7 @@ export const PlantSelector = () => {
 
       <View style={styles.plantsContainer}>
         <FlatList
-          data={plants}
+          data={filteredPlants}
           renderItem={({item}) => (
             <PlantCardPrimary
               key={item.id}
