@@ -6,6 +6,7 @@ import colors from '../styles/colors'
 import { Welcome } from '../pages/Welcome'
 import { NameSuccess } from '../pages/NameSuccess'
 import { Name } from '../pages/Name'
+import { PlantSelector } from '../pages/PlantSelector'
 
 const {
   Navigator,
@@ -32,6 +33,10 @@ export const AppStackRoutes = () => (
     <Screen
       name="Name"
       component={Name}
+    />
+    <Screen
+      name="PlantSelector"
+      component={PlantSelector}
     />
   </Navigator>
 )
