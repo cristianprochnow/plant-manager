@@ -14,7 +14,6 @@ export const styles = StyleSheet.create({
   },
 
   title: {
-    marginTop: 38,
     fontSize: 32,
     fontFamily: fonts.jost[600],
     textAlign: 'center',
@@ -22,7 +21,6 @@ export const styles = StyleSheet.create({
   },
 
   subtitle: {
-    paddingHorizontal: 20,
     fontSize: 18,
     fontFamily: fonts.jost[400],
     textAlign: 'center',

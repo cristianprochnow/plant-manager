@@ -31,7 +31,8 @@ export const styles = StyleSheet.create({
   },
 
   headerAvatar: {
-    width: 56,
-    height: 56,
+    width: 64,
+    height: 64,
+    borderRadius: 32
   }
 })

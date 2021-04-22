@@ -1,29 +1,39 @@
 import React from 'react'
 import {
   Image,
+  ImageSourcePropType,
   Text,
   View
 } from 'react-native'
 
-import headerAvatar from '../assets/waterdrop.png'
 import { styles } from '../styles/components/header'
 
-export const Header = () => {
+interface HeaderProps {
+  complementText: string
+  emphasisText: string
+  image: ImageSourcePropType
+}
+
+export const Header = ({
+  complementText,
+  emphasisText,
+  image
+}: HeaderProps) => {
   return (
     <View style={styles.header}>
       <View style={styles.headerTextBox}>
         <Text style={[
           styles.headerTextFirst,
           styles.headerText
-        ]}>Olá,</Text>
+        ]}>{complementText}</Text>
         <Text style={[
           styles.headerTextSecond,
           styles.headerText
-        ]}>Tiago</Text>
+        ]}>{emphasisText}</Text>
       </View>
 
       <Image
-        source={headerAvatar}
+        source={image}
         resizeMode="cover"
         style={styles.headerAvatar}
       />
