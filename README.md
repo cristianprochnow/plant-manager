@@ -28,11 +28,13 @@ An app that will help you to always maintain your plants and every else vegetabl
 
 - [x] Attribute custom types to images into TypeScript within React Native
 - [x] Host quickly a mobile app demonstration at web with Expo
-- [x] Use custom fonts at React Native app with `@expo-google-fonts` lib
+- [x] Use custom fonts at React Native app with `@expo-google-fonts` library
 - [x] Apply responsive sizes to images into React Native using `Dimensions` class from `react-native` package
 - [x] Work with multiple routes types with `react-navigation`
 - [x] Turn keyboard using lightly better with `Keyboard` resource from `react-native`
 - [x] Work with lists into React Native
+- [x] Use a `.json` file as a quick API with `json-server` library
+- [x] Use `SVG` images into the React Native app
 
 # Getting started
 
