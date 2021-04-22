@@ -6,15 +6,14 @@ import fonts from '../fonts'
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+
+  wrapper: {
     padding: 32
   },
 
   filter: {
     marginTop: 40
-  },
-
-  filterTextBox: {
-    marginBottom: 20
   },
 
   filterText: {
@@ -30,5 +29,11 @@ export const styles = StyleSheet.create({
   filterTextComplement: {
     fontFamily: fonts.jost[400],
     color: colors.text
+  },
+
+  environmentList: {
+    height: 48,
+    justifyContent: 'center',
+    paddingHorizontal: 32
   }
 })
