@@ -35,5 +35,15 @@ export const styles = StyleSheet.create({
     height: 48,
     justifyContent: 'center',
     paddingHorizontal: 32
+  },
+
+  plantsContainer: {
+    flex: 1,
+    marginTop: 12
+  },
+
+  plantsList: {
+    paddingVertical: 20,
+    paddingHorizontal: 24,
   }
 })

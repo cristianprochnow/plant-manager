@@ -13,44 +13,62 @@ import { Header } from '../components/Header'
 import { api } from '../services/api'
 import headerAvatar from '../assets/cristian.png'
 import { styles } from '../styles/pages/plantSelector'
+import { PlantCardPrimary } from '../components/PlantCardPrimary'
 
 interface EnvironmentData {
   key: string
   title: string
 }
 
+interface PlantsData {
+  id: number
+  name: string
+  about: string
+  water_tips: string
+  photo: string
+  environments: string[],
+  frequency: {
+    times: number,
+    repeat_every: string
+  }
+}
+
 export const PlantSelector = () => {
   const [environments, setEnvironments] = useState<EnvironmentData[]>([])
-  const [selectedEnvironments, setSelectedEnvironments] = useState<string[]>([])
+  const [selectedEnvironment, setSelectedEnvironment] = useState('all')
+  const [plants, setPlants] = useState<PlantsData[]>([])
+  /** the "all" option is the "todos" button */
+  const allEnvironmentsOption = {
+    key: 'all',
+    title: 'Todos'
+  }
 
   function handleToggleEnvironment(environmentKey: string) {
-    const isEnvironmentAtArray = selectedEnvironments.includes(environmentKey)
-
-    if (isEnvironmentAtArray) {
-      unselectEnvironment(environmentKey)
-    } else {
-      selectEnvironment(environmentKey)
-    }
-
-    function selectEnvironment(environmentKey: string) {
-      setSelectedEnvironments([...selectedEnvironments, environmentKey])
-    }
-
-    function unselectEnvironment(environmentKey: string) {
-      const filteredEnvironments = selectedEnvironments
-        .filter(environmentItem => environmentItem !== environmentKey)
-
-      setSelectedEnvironments(filteredEnvironments)
-    }
+    setSelectedEnvironment(environmentKey)
   }
 
   useEffect(() => {
-    fetchPlantEnvironmentData()
+    fetchPlantsEnvironmentsData()
 
-    async function fetchPlantEnvironmentData() {
-      const {data} = await api.get('/plants_environments')
+    async function fetchPlantsEnvironmentsData() {
+      const {data} = await api
+        .get('/plants_environments?_sort=title&_order=asc')
 
-      setEnvironments(data)
+      setEnvironments([
+        allEnvironmentsOption,
+        ...data
+      ])
+    }
+  }, [])
+
+  useEffect(() => {
+    fetchPlantsData()
+
+    async function fetchPlantsData() {
+      const {data} = await api
+        .get('/plants?_sort=name&_order=asc')
+
+      setPlants(data)
     }
   }, [])
 
@@ -84,13 +102,31 @@ export const PlantSelector = () => {
             <EnvironmentButton
               key={item.key}
               label={item.title}
-              isSelected={selectedEnvironments.includes(item.key)}
+              isSelected={selectedEnvironment === item.key}
               onPress={() => handleToggleEnvironment(item.key)}
             />
           )}
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.environmentList}
+        />
+      </View>
+
+      <View style={styles.plantsContainer}>
+        <FlatList
+          data={plants}
+          renderItem={({item}) => (
+            <PlantCardPrimary
+              key={item.id}
+              data={{
+                title: item.name,
+                photo: item.photo
+              }}
+            />
+          )}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.plantsList}
+          numColumns={2}
         />
       </View>
     </View>

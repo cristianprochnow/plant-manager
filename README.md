@@ -32,7 +32,7 @@ An app that will help you to always maintain your plants and every else vegetabl
 - [x] Apply responsive sizes to images into React Native using `Dimensions` class from `react-native` package
 - [x] Work with multiple routes types with `react-navigation`
 - [x] Turn keyboard using lightly better with `Keyboard` resource from `react-native`
-- [ ] Coming soon...
+- [x] Work with lists into React Native
 
 # Getting started
 
