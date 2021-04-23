@@ -13,6 +13,7 @@ import Emoji from 'react-native-emoji'
 import { ActionButton } from '../components/ActionButton'
 import { BasicInput } from '../components/BasicInput'
 import { styles } from '../styles/pages/name'
+import { setDataToStorage } from '../utils/saveDataIntoStorage'
 
 export const Name = () => {
   const navigation = useNavigation()
@@ -24,8 +25,16 @@ export const Name = () => {
     setUserName(text)
   }
 
-  function handleSubmit() {
-    navigation.navigate('NameSuccess')
+  async function handleSubmit() {
+    await setDataToStorage(
+      '@plantmanager:user',
+      userName
+    )
+    navigateToSuccessPage()
+
+    function navigateToSuccessPage() {
+      navigation.navigate('NameSuccess')
+    }
   }
 
   function handleDismissKeyboard() {
