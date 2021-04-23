@@ -35,6 +35,7 @@ An app that will help you to always maintain your plants and every else vegetabl
 - [x] Work with lists into React Native
 - [x] Use a `.json` file as a quick API with `json-server` library
 - [x] Use `SVG` images into the React Native app
+- [x] Work with Lottie animations
 
 # Getting started
 

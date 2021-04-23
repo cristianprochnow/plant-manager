@@ -5,7 +5,8 @@ import React, {
 import {
   Text,
   View,
-  FlatList
+  FlatList,
+  ActivityIndicator
 } from 'react-native'
 
 import { EnvironmentButton } from '../components/EnvironmentButton'
@@ -15,6 +16,7 @@ import { Loading } from '../components/Loading'
 import { api } from '../services/api'
 import headerAvatar from '../assets/cristian.png'
 import { styles } from '../styles/pages/plantSelector'
+import colors from '../styles/colors'
 
 interface EnvironmentData {
   key: string
@@ -40,6 +42,9 @@ export const PlantSelector = () => {
   const [plants, setPlants] = useState<PlantsData[]>([])
   const [filteredPlants, setFilteredPlants] = useState<PlantsData[]>([])
   const [isLoading, setLoading] = useState(true)
+  const [contentPage, setContentPage] = useState(1)
+  const [hasMoreContentToLoad, setMoreContentToLoad] = useState(true)
+  const [isAllContentLoaded, setAllContentLoaded] = useState(false)
   /** the "all" option is the "todos" button */
   const allEnvironmentsOption = {
     key: 'all',
@@ -68,6 +73,36 @@ export const PlantSelector = () => {
     }
   }
 
+  async function fetchPlantsData() {
+    const {data} = await api
+      .get(`/plants?_sort=name&_order=asc&_page=${contentPage}&_limit=8`)
+
+    if (!data) {
+      setLoading(true)
+
+      return
+    }
+
+    if (contentPage > 1) {
+      setPlants(oldValue => [...oldValue, ...data])
+      setFilteredPlants(oldValue => [...oldValue, ...data])
+    } else {
+      setPlants(data)
+      setFilteredPlants(data)
+    }
+
+    setLoading(false)
+    setMoreContentToLoad(false)
+  }
+
+  function handleFetchMoreData(scrollDistance: number) {
+    if (scrollDistance < 1) return
+
+    setMoreContentToLoad(true)
+    setContentPage(oldValue => oldValue + 1)
+    fetchPlantsData()
+  }
+
   useEffect(() => {
     fetchData()
 
@@ -84,14 +119,6 @@ export const PlantSelector = () => {
           allEnvironmentsOption,
           ...data
         ])
-      }
-
-      async function fetchPlantsData() {
-        const {data} = await api
-          .get('/plants?_sort=name&_order=asc')
-
-        setPlants(data)
-        setFilteredPlants(data)
       }
     }
   }, [])
@@ -153,6 +180,13 @@ export const PlantSelector = () => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.plantsList}
           numColumns={2}
+          onEndReachedThreshold={0.1}
+          onEndReached={({distanceFromEnd}) => handleFetchMoreData(distanceFromEnd)}
+          ListFooterComponent={
+            hasMoreContentToLoad
+              ? <ActivityIndicator color={colors.green} />
+              : <></>
+          }
         />
       </View>
     </View>
