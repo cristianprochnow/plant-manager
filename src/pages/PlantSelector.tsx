@@ -10,10 +10,11 @@ import {
 
 import { EnvironmentButton } from '../components/EnvironmentButton'
 import { Header } from '../components/Header'
+import { PlantCardPrimary } from '../components/PlantCardPrimary'
+import { Loading } from '../components/Loading'
 import { api } from '../services/api'
 import headerAvatar from '../assets/cristian.png'
 import { styles } from '../styles/pages/plantSelector'
-import { PlantCardPrimary } from '../components/PlantCardPrimary'
 
 interface EnvironmentData {
   key: string
@@ -38,6 +39,7 @@ export const PlantSelector = () => {
   const [selectedEnvironment, setSelectedEnvironment] = useState('all')
   const [plants, setPlants] = useState<PlantsData[]>([])
   const [filteredPlants, setFilteredPlants] = useState<PlantsData[]>([])
+  const [isLoading, setLoading] = useState(true)
   /** the "all" option is the "todos" button */
   const allEnvironmentsOption = {
     key: 'all',
@@ -67,30 +69,34 @@ export const PlantSelector = () => {
   }
 
   useEffect(() => {
-    fetchPlantsEnvironmentsData()
+    fetchData()
 
-    async function fetchPlantsEnvironmentsData() {
-      const {data} = await api
-        .get('/plants_environments?_sort=title&_order=asc')
+    async function fetchData() {
+      await fetchPlantsEnvironmentsData()
+      await fetchPlantsData()
+      setLoading(false)
 
-      setEnvironments([
-        allEnvironmentsOption,
-        ...data
-      ])
+      async function fetchPlantsEnvironmentsData() {
+        const {data} = await api
+          .get('/plants_environments?_sort=title&_order=asc')
+
+        setEnvironments([
+          allEnvironmentsOption,
+          ...data
+        ])
+      }
+
+      async function fetchPlantsData() {
+        const {data} = await api
+          .get('/plants?_sort=name&_order=asc')
+
+        setPlants(data)
+        setFilteredPlants(data)
+      }
     }
   }, [])
 
-  useEffect(() => {
-    fetchPlantsData()
-
-    async function fetchPlantsData() {
-      const {data} = await api
-        .get('/plants?_sort=name&_order=asc')
-
-      setPlants(data)
-      setFilteredPlants(data)
-    }
-  }, [])
+  if (isLoading) return <Loading />
 
   return (
     <View style={styles.container}>
