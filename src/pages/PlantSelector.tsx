@@ -13,10 +13,12 @@ import { EnvironmentButton } from '../components/EnvironmentButton'
 import { Header } from '../components/Header'
 import { PlantCardPrimary } from '../components/PlantCardPrimary'
 import { Loading } from '../components/Loading'
-import { api } from '../services/api'
-import headerAvatar from '../assets/cristian.png'
 import { styles } from '../styles/pages/plantSelector'
 import colors from '../styles/colors'
+import headerAvatar from '../assets/cristian.png'
+import { api } from '../services/api'
+import { getDataFromStorage } from '../utils/getDataFromStorage'
+import storageConstants from '../constants/asyncStorage'
 
 interface EnvironmentData {
   key: string
@@ -44,7 +46,7 @@ export const PlantSelector = () => {
   const [isLoading, setLoading] = useState(true)
   const [contentPage, setContentPage] = useState(1)
   const [hasMoreContentToLoad, setMoreContentToLoad] = useState(true)
-  const [isAllContentLoaded, setAllContentLoaded] = useState(false)
+  const [userName, setUserName] = useState('')
   /** the "all" option is the "todos" button */
   const allEnvironmentsOption = {
     key: 'all',
@@ -103,6 +105,7 @@ export const PlantSelector = () => {
     fetchPlantsData()
   }
 
+  /** fetch needed data (i.e. plants and environments) */
   useEffect(() => {
     fetchData()
 
@@ -123,6 +126,17 @@ export const PlantSelector = () => {
     }
   }, [])
 
+  /** get user name saved into AsyncStorage from device */
+  useEffect(() => {
+    handleSetUserName()
+
+    async function handleSetUserName() {
+      const userNameFromStorage = await getDataFromStorage(storageConstants.user)
+
+      setUserName(userNameFromStorage)
+    }
+  }, [])
+
   if (isLoading) return <Loading />
 
   return (
@@ -130,7 +144,7 @@ export const PlantSelector = () => {
       <View style={styles.wrapper}>
         <Header
           complementText="Olá,"
-          emphasisText="Cristian"
+          emphasisText={userName}
           image={headerAvatar}
         />
 

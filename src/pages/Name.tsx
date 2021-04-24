@@ -14,6 +14,7 @@ import { ActionButton } from '../components/ActionButton'
 import { BasicInput } from '../components/BasicInput'
 import { styles } from '../styles/pages/name'
 import { setDataToStorage } from '../utils/saveDataIntoStorage'
+import storageConstants from '../constants/asyncStorage'
 
 export const Name = () => {
   const navigation = useNavigation()
@@ -27,7 +28,7 @@ export const Name = () => {
 
   async function handleSubmit() {
     await setDataToStorage(
-      '@plantmanager:user',
+      storageConstants.user,
       userName
     )
     navigateToSuccessPage()
