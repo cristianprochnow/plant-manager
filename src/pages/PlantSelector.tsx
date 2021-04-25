@@ -107,8 +107,8 @@ export const PlantSelector = () => {
     fetchPlantsData()
   }
 
-  function handleNavigateToPlantSave() {
-    navigation.navigate('PlantSaving')
+  function handleNavigateToPlantSave(plant: PlantsData) {
+    navigation.navigate('PlantSaving', {plant})
   }
 
   /** fetch needed data (i.e. plants and environments) */
@@ -197,7 +197,7 @@ export const PlantSelector = () => {
                 title: item.name,
                 photo: item.photo
               }}
-              onPress={handleNavigateToPlantSave}
+              onPress={() => handleNavigateToPlantSave(item)}
             />
           )}
           showsVerticalScrollIndicator={false}

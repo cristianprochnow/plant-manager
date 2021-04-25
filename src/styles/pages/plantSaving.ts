@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.jost[400],
     fontSize: 18,
     lineHeight: 26,
+    textAlign: 'center',
     color: colors.text
   },
 
@@ -42,5 +43,21 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     color: colors.text
+  },
+
+  dateTimeSelectorActivatorButton: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  dateTimeSelectorActivatorText: {
+    marginLeft: 4,
+    paddingVertical: 16,
+    textAlign: 'center',
+    fontFamily: fonts.jost[500],
+    fontSize: 16,
+    lineHeight: 24,
+    color: colors.green
   }
 })
