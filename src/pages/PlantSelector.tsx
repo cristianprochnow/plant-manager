@@ -8,6 +8,7 @@ import {
   FlatList,
   ActivityIndicator
 } from 'react-native'
+import { useNavigation } from '@react-navigation/core'
 
 import { EnvironmentButton } from '../components/EnvironmentButton'
 import { Header } from '../components/Header'
@@ -19,32 +20,19 @@ import headerAvatar from '../assets/cristian.png'
 import { api } from '../services/api'
 import { getDataFromStorage } from '../utils/getDataFromStorage'
 import storageConstants from '../constants/asyncStorage'
-import { useNavigation } from '@react-navigation/core'
+import { Plant } from '../types'
 
 interface EnvironmentData {
   key: string
   title: string
 }
 
-interface PlantsData {
-  id: number
-  name: string
-  about: string
-  water_tips: string
-  photo: string
-  environments: string[],
-  frequency: {
-    times: number,
-    repeat_every: string
-  }
-}
-
 export const PlantSelector = () => {
   const navigation = useNavigation()
   const [environments, setEnvironments] = useState<EnvironmentData[]>([])
   const [selectedEnvironment, setSelectedEnvironment] = useState('all')
-  const [plants, setPlants] = useState<PlantsData[]>([])
-  const [filteredPlants, setFilteredPlants] = useState<PlantsData[]>([])
+  const [plants, setPlants] = useState<Plant[]>([])
+  const [filteredPlants, setFilteredPlants] = useState<Plant[]>([])
   const [isLoading, setLoading] = useState(true)
   const [contentPage, setContentPage] = useState(1)
   const [hasMoreContentToLoad, setMoreContentToLoad] = useState(true)
@@ -107,7 +95,7 @@ export const PlantSelector = () => {
     fetchPlantsData()
   }
 
-  function handleNavigateToPlantSave(plant: PlantsData) {
+  function handleNavigateToPlantSave(plant: Plant) {
     navigation.navigate('PlantSaving', {plant})
   }
 

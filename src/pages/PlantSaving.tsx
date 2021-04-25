@@ -9,26 +9,16 @@ import Emoji from 'react-native-emoji'
 import { SvgFromUri } from 'react-native-svg'
 import { useRoute } from '@react-navigation/core'
 import DateTimePicker, { Event } from '@react-native-community/datetimepicker'
-import { isBefore } from 'date-fns'
+import { format, isBefore } from 'date-fns'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import { ActionButton } from '../components/ActionButton'
 import { PlantTip } from '../components/PlantTip'
 import { styles } from '../styles/pages/plantSaving'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Plant } from '../types'
 
 interface RouteParams {
-  plant: {
-    id: number
-    name: string
-    about: string
-    water_tips: string
-    photo: string
-    environments: string[],
-    frequency: {
-      times: number,
-      repeat_every: string
-    }
-  }
+  plant: Plant
 }
 
 export const PlantSaving = () => {
@@ -111,7 +101,7 @@ export const PlantSaving = () => {
               >
                 <Emoji name="clock1" />
                 <Text style={styles.dateTimeSelectorActivatorText}>
-                  Selecionar um horário para o aviso
+                  {`Mudar ${format(selectedDateTime, 'HH:mm')}`}
                 </Text>
               </TouchableOpacity>
             )

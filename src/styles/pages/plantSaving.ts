@@ -42,7 +42,8 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.jost[400],
     fontSize: 16,
     lineHeight: 24,
-    color: colors.text
+    color: colors.text,
+    textAlign: 'center'
   },
 
   dateTimeSelectorActivatorButton: {
@@ -54,9 +55,8 @@ export const styles = StyleSheet.create({
   dateTimeSelectorActivatorText: {
     marginLeft: 4,
     paddingVertical: 16,
-    textAlign: 'center',
     fontFamily: fonts.jost[500],
-    fontSize: 16,
+    fontSize: 18,
     lineHeight: 24,
     color: colors.green
   }
