@@ -42,29 +42,5 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     color: colors.text
-  },
-
-  tipContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
-    minHeight: 88,
-    padding: 16,
-    borderRadius: 20,
-    backgroundColor: colors.blue_light
-  },
-
-  tipImage: {
-    width: 56,
-    height: 56,
-  },
-
-  tipDescription: {
-    flex: 1,
-    marginLeft: 16,
-    fontFamily: fonts.jost[400],
-    fontSize: 16,
-    lineHeight: 24,
-    color: colors.blue
   }
 })

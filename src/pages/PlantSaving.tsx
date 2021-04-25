@@ -9,6 +9,7 @@ import { SvgFromUri } from 'react-native-svg'
 import { ActionButton } from '../components/ActionButton'
 import waterdropImage from '../assets/waterdrop.png'
 import { styles } from '../styles/pages/plantSaving'
+import { PlantTip } from '../components/PlantTip'
 
 export const PlantSaving = () => {
   const plantSvgUri = 'https://storage.googleapis.com/golden-wind/nextlevelweek/05-plantmanager/2.svg'
@@ -30,16 +31,9 @@ export const PlantSaving = () => {
       </View>
 
       <View style={styles.timerContainer}>
-        <View style={styles.tipContainer}>
-          <Image
-            source={waterdropImage}
-            style={styles.tipImage}
-          />
-
-          <Text style={styles.tipDescription}>
-          Mantenha a terra sempre úmida sem encharcar. Regue 2 vezes na semana.
-          </Text>
-        </View>
+        <PlantTip
+          text="A rega deve ser feita com 400ml a cada dois dias"
+        />
 
         <Text style={styles.timerLabel}>
           Escolha o melhor horário para ser lembrado:
