@@ -19,6 +19,7 @@ import headerAvatar from '../assets/cristian.png'
 import { api } from '../services/api'
 import { getDataFromStorage } from '../utils/getDataFromStorage'
 import storageConstants from '../constants/asyncStorage'
+import { useNavigation } from '@react-navigation/core'
 
 interface EnvironmentData {
   key: string
@@ -39,6 +40,7 @@ interface PlantsData {
 }
 
 export const PlantSelector = () => {
+  const navigation = useNavigation()
   const [environments, setEnvironments] = useState<EnvironmentData[]>([])
   const [selectedEnvironment, setSelectedEnvironment] = useState('all')
   const [plants, setPlants] = useState<PlantsData[]>([])
@@ -105,6 +107,10 @@ export const PlantSelector = () => {
     fetchPlantsData()
   }
 
+  function handleNavigateToPlantSave() {
+    navigation.navigate('PlantSaving')
+  }
+
   /** fetch needed data (i.e. plants and environments) */
   useEffect(() => {
     fetchData()
@@ -165,6 +171,7 @@ export const PlantSelector = () => {
       <View>
         <FlatList
           data={environments}
+          keyExtractor={item => String(item.key)}
           renderItem={({item}) => (
             <EnvironmentButton
               key={item.key}
@@ -182,6 +189,7 @@ export const PlantSelector = () => {
       <View style={styles.plantsContainer}>
         <FlatList
           data={filteredPlants}
+          keyExtractor={item => String(item.id)}
           renderItem={({item}) => (
             <PlantCardPrimary
               key={item.id}
@@ -189,6 +197,7 @@ export const PlantSelector = () => {
                 title: item.name,
                 photo: item.photo
               }}
+              onPress={handleNavigateToPlantSave}
             />
           )}
           showsVerticalScrollIndicator={false}

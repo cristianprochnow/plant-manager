@@ -2,11 +2,11 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import colors from '../styles/colors'
-
 import { Welcome } from '../pages/Welcome'
 import { NameSuccess } from '../pages/NameSuccess'
 import { Name } from '../pages/Name'
 import { PlantSelector } from '../pages/PlantSelector'
+import { PlantSaving } from '../pages/PlantSaving'
 
 const {
   Navigator,
@@ -37,6 +37,10 @@ export const AppStackRoutes = () => (
     <Screen
       name="PlantSelector"
       component={PlantSelector}
+    />
+    <Screen
+      name="PlantSaving"
+      component={PlantSaving}
     />
   </Navigator>
 )
