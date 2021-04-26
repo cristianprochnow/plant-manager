@@ -1,3 +1,4 @@
 export default {
-  user: '@plantmanager:user'
+  user: '@plantmanager:user',
+  plants: '@plantmanager: plants'
 }

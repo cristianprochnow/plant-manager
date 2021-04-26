@@ -9,13 +9,21 @@ import Emoji from 'react-native-emoji'
 import { SvgFromUri } from 'react-native-svg'
 import { useRoute } from '@react-navigation/core'
 import DateTimePicker, { Event } from '@react-native-community/datetimepicker'
-import { format, isBefore } from 'date-fns'
+import {
+  format,
+  isBefore
+} from 'date-fns'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import { ActionButton } from '../components/ActionButton'
 import { PlantTip } from '../components/PlantTip'
 import { styles } from '../styles/pages/plantSaving'
-import { Plant } from '../types'
+import { Plant } from '../types/Plant'
+import {
+  loadPlants,
+  savePlant
+} from '../libs/storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 interface RouteParams {
   plant: Plant
@@ -55,6 +63,20 @@ export const PlantSaving = () => {
 
   function handleActiveDateTimePickerAtAndroidDevice() {
     setDataPickerVisible(oldState => !oldState)
+  }
+
+  async function handleSavePlant() {
+    try {
+      await savePlant({
+        ...plant,
+        dateTimeNotification: selectedDateTime
+      })
+
+      Alert.alert('Aviso salvo! 🎉')
+    } catch (error) {
+      Alert.alert('Não foi possível salvar a planta. 😥')
+      console.log(error)
+    }
   }
 
   return (
@@ -110,7 +132,7 @@ export const PlantSaving = () => {
 
         <ActionButton
           label="Cadastrar planta"
-          onPress={() => {}}
+          onPress={handleSavePlant}
         />
       </View>
     </View>

@@ -11,3 +11,9 @@ export interface Plant {
   }
   dateTimeNotification: Date
 }
+
+export interface StoragePlant {
+  [id: string]: {
+    data: Plant
+  }
+}

@@ -20,7 +20,7 @@ import headerAvatar from '../assets/cristian.png'
 import { api } from '../services/api'
 import { getDataFromStorage } from '../utils/getDataFromStorage'
 import storageConstants from '../constants/asyncStorage'
-import { Plant } from '../types'
+import { Plant } from '../types/Plant'
 
 interface EnvironmentData {
   key: string
