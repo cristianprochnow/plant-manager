@@ -12,7 +12,8 @@ export const styles = StyleSheet.create({
   },
 
   headerTextBox: {
-    flex: 1
+    flex: 1,
+    paddingVertical: 8
   },
 
   headerText: {
