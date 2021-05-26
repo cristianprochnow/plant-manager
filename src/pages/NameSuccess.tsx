@@ -6,8 +6,8 @@ import { SuccessMessage } from '../components/SuccessMessage'
 export const NameSuccess = () => {
   const navigation = useNavigation()
 
-  function handleMoveToPlantSelector() {
-    navigation.navigate('PlantSelector')
+  function handleMoveToHome() {
+    navigation.navigate('Home')
   }
 
   return (
@@ -16,7 +16,7 @@ export const NameSuccess = () => {
       title="Prontinho"
       subtitle=" Agora vamos começar a cuidar das suas plantinhas com muito cuidado."
       buttonLabel="Começar"
-      onConfirm={handleMoveToPlantSelector}
+      onConfirm={handleMoveToHome}
     />
   )
 }

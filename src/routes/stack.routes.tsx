@@ -8,6 +8,7 @@ import { Name } from '../pages/Name'
 import { PlantSelector } from '../pages/PlantSelector'
 import { PlantSaving } from '../pages/PlantSaving'
 import { PlantSavingSuccess } from '../pages/PlantSavingSuccess'
+import { AppTabsRoutes } from './tabs.routes'
 
 const {
   Navigator,
@@ -36,8 +37,8 @@ export const AppStackRoutes = () => (
       component={Name}
     />
     <Screen
-      name="PlantSelector"
-      component={PlantSelector}
+      name="Home"
+      component={AppTabsRoutes}
     />
     <Screen
       name="PlantSaving"

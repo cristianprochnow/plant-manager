@@ -131,8 +131,6 @@ export const PlantSelector = () => {
     }
   }, [])
 
-  if (isLoading) return <Loading />
-
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
@@ -156,50 +154,58 @@ export const PlantSelector = () => {
         </View>
       </View>
 
-      <View>
-        <FlatList
-          data={environments}
-          keyExtractor={item => String(item.key)}
-          renderItem={({item}) => (
-            <EnvironmentButton
-              key={item.key}
-              label={item.title}
-              isSelected={selectedEnvironment === item.key}
-              onPress={() => handleToggleEnvironment(item.key)}
-            />
-          )}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.environmentList}
-        />
-      </View>
+      {
+        isLoading
+          ? (<Loading />)
+          : (
+            <>
+              <View>
+                <FlatList
+                  data={environments}
+                  keyExtractor={item => String(item.key)}
+                  renderItem={({item}) => (
+                    <EnvironmentButton
+                      key={item.key}
+                      label={item.title}
+                      isSelected={selectedEnvironment === item.key}
+                      onPress={() => handleToggleEnvironment(item.key)}
+                    />
+                  )}
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={styles.environmentList}
+                />
+              </View>
 
-      <View style={styles.plantsContainer}>
-        <FlatList
-          data={filteredPlants}
-          keyExtractor={item => String(item.id)}
-          renderItem={({item}) => (
-            <PlantCardPrimary
-              key={item.id}
-              data={{
-                title: item.name,
-                photo: item.photo
-              }}
-              onPress={() => handleNavigateToPlantSave(item)}
-            />
-          )}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.plantsList}
-          numColumns={2}
-          onEndReachedThreshold={0.1}
-          onEndReached={({distanceFromEnd}) => handleFetchMoreData(distanceFromEnd)}
-          ListFooterComponent={
-            hasMoreContentToLoad
-              ? <ActivityIndicator color={colors.green} />
-              : <></>
-          }
-        />
-      </View>
+              <View style={styles.plantsContainer}>
+                <FlatList
+                  data={filteredPlants}
+                  keyExtractor={item => String(item.id)}
+                  renderItem={({item}) => (
+                    <PlantCardPrimary
+                      key={item.id}
+                      data={{
+                        title: item.name,
+                        photo: item.photo
+                      }}
+                      onPress={() => handleNavigateToPlantSave(item)}
+                    />
+                  )}
+                  showsVerticalScrollIndicator={false}
+                  contentContainerStyle={styles.plantsList}
+                  numColumns={2}
+                  onEndReachedThreshold={0.1}
+                  onEndReached={({distanceFromEnd}) => handleFetchMoreData(distanceFromEnd)}
+                  ListFooterComponent={
+                    hasMoreContentToLoad
+                      ? <ActivityIndicator color={colors.green} />
+                      : <></>
+                  }
+                />
+              </View>
+            </>
+          )
+      }
     </View>
   )
 }

@@ -7,7 +7,7 @@ export const PlantSavingSuccess = () => {
   const { navigate } = useNavigation()
 
   function handleNavigateToHome() {
-    navigate('PlantSelector')
+    navigate('Home')
   }
 
   return (
