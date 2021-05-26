@@ -7,6 +7,7 @@ import { NameSuccess } from '../pages/NameSuccess'
 import { Name } from '../pages/Name'
 import { PlantSelector } from '../pages/PlantSelector'
 import { PlantSaving } from '../pages/PlantSaving'
+import { PlantSavingSuccess } from '../pages/PlantSavingSuccess'
 
 const {
   Navigator,
@@ -41,6 +42,10 @@ export const AppStackRoutes = () => (
     <Screen
       name="PlantSaving"
       component={PlantSaving}
+    />
+    <Screen
+      name="PlantSavingSuccess"
+      component={PlantSavingSuccess}
     />
   </Navigator>
 )

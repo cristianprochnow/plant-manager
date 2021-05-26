@@ -7,7 +7,10 @@ import {
 } from 'react-native'
 import Emoji from 'react-native-emoji'
 import { SvgFromUri } from 'react-native-svg'
-import { useRoute } from '@react-navigation/core'
+import {
+  useRoute,
+  useNavigation
+} from '@react-navigation/core'
 import DateTimePicker, { Event } from '@react-native-community/datetimepicker'
 import {
   format,
@@ -29,6 +32,7 @@ interface RouteParams {
 }
 
 export const PlantSaving = () => {
+  const navigation = useNavigation()
   const route = useRoute()
   const {plant} = route.params as RouteParams
   const [selectedDateTime, setSelectedDateTime] = useState(new Date())
@@ -70,10 +74,13 @@ export const PlantSaving = () => {
         ...plant,
         dateTimeNotification: selectedDateTime
       })
+      handleNavigateToSuccessScreen()
 
-      Alert.alert('Aviso salvo! 🎉')
+      function handleNavigateToSuccessScreen() {
+        navigation.navigate('PlantSavingSuccess')
+      }
     } catch (error) {
-      Alert.alert('Não foi possível salvar a planta. 😥')
+      Alert.alert('Ooops...', 'Não foi possível salvar a planta. 😥')
       console.log(error)
     }
   }

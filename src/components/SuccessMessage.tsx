@@ -3,7 +3,7 @@ import {
   Text,
   View
 } from 'react-native'
-import Emoji from 'react-native-emoji'
+import Emoji from 'react-native-emoji' // https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json
 
 import { styles } from '../styles/components/successMessage'
 import { ActionButton } from './ActionButton'
