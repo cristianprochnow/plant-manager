@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import FeatherIcons from 'react-native-vector-icons/Feather'
 
 import { PlantSelector } from '../pages/PlantSelector'

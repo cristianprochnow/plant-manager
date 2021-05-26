@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
   },
 
   wrapper: {
-    padding: 32
+    padding: 32,
+    marginTop: 32
   },
 
   filter: {

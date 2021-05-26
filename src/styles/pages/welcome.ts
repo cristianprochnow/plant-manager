@@ -10,7 +10,8 @@ export const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 32
+    padding: 32,
+    marginTop: 32
   },
 
   title: {
