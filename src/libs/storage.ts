@@ -8,20 +8,18 @@ import storageConst from '../constants/asyncStorage'
 
 export async function savePlant(plant: Plant) {
   try {
-    const data: StoragePlant = await getDataFromStorage(storageConst.plants)
+    const data: StoragePlant[] = await getDataFromStorage(storageConst.plants) || []
 
     const newPlant = {
       [plant.id]: {
         data: plant
       }
     }
+    const mergedPlants = [ ...data, newPlant ]
 
     await setDataToStorage(
       storageConst.plants,
-      {
-        ...data,
-        ...newPlant
-      }
+      mergedPlants
     )
   } catch (error) {
     throw new Error(error)

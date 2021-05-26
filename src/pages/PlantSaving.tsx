@@ -23,7 +23,6 @@ import {
   loadPlants,
   savePlant
 } from '../libs/storage'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 
 interface RouteParams {
   plant: Plant
